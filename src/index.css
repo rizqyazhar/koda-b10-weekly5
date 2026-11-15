@@ -42,3 +42,15 @@
 
   --color-bg-closed: rgba(244, 239, 228, 1);
 }
+
+@utility title {
+  font-weight: 600;
+  color: var(--color-font-primary);
+  font-family: var(--font-fraunces);
+}
+
+@utility description {
+  font-weight: 400;
+  color: var(--color-font-secondary);
+  font-family: var(--font-publicSans);
+}
