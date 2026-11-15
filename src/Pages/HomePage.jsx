@@ -1,7 +1,9 @@
 import MainLayout from "../layouts/MainLayout";
 import Button from "../components/Button";
-import { reportFlowOverviewText } from "../lib/data";
+import { communityReportData, reportFlowOverviewText } from "../lib/data";
 import ReportFlowCard from "../components/ReportFlowCard";
+import { Link } from "react-router";
+import SmallReportCard from "../components/SmallReportCard";
 
 export default function HomePage() {
   return (
@@ -59,10 +61,29 @@ export default function HomePage() {
           </p>
         </div>
       </section>
-      <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5 border-t border-border-primary py-7 bg-red-500'>
+      <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5 border-t border-border-primary py-7'>
         {reportFlowOverviewText.map((item, index) => {
           return <ReportFlowCard key={index} item={item} />;
         })}
+      </section>
+      <section className='flex flex-col gap-4 border-t border-border-primary pt-7'>
+        <div className='flex flex-col gap-5 md:gap-0 md:flex-row justify-between'>
+          <div>
+            <h2 className='title text-lg'>Recent Community Reports</h2>
+            <p className='description text-xs lg:text-sm'>
+              Verified reports lodged in Jakarta and surrounding regions
+            </p>
+          </div>
+          <Link to={"/live-feed"} className='btn-nav flex flex-col gap-1'>
+            View live feed
+            <span>&rarr;</span>
+          </Link>
+        </div>
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
+          {communityReportData.slice(0, 4).map((item, index) => {
+            return <SmallReportCard key={index} item={item} />;
+          })}
+        </div>
       </section>
     </MainLayout>
   );
