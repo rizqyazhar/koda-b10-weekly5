@@ -1,7 +1,11 @@
 import { Link, NavLink } from "react-router";
 import Button from "./Button";
+import { useState } from "react";
+import LoginModal from "./LoginModal";
 
 export default function Navbar() {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <header className='w-full sticky top-0 z-10 flex justify-center bg-bg-tertiary border-b border-border-secondary'>
       <nav className='w-full px-7.5 md:px-10 lg:px-25 py-3 md:py-4 flex justify-between items-center'>
@@ -42,6 +46,7 @@ export default function Navbar() {
         </div>
         <div className='flex items-center gap-2'>
           <Button
+            onClick={() => setOpenModal((prev) => !prev)}
             type='click'
             btnText='Sign In'
             btnImg={["/src/assets/icon/login-icon.svg"]}
@@ -60,6 +65,7 @@ export default function Navbar() {
             btnTextCustomStyles='font-publicSans font-semibold text-xs text-font-quaternary'
           />
         </div>
+        {openModal && <LoginModal setOpenModal={setOpenModal} />}
       </nav>
     </header>
   );
