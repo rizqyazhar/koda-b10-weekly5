@@ -1,5 +1,6 @@
 import Accordion from "../components/Accordion";
 import MainLayout from "../layouts/MainLayout";
+import Button from "../components/Button";
 
 export default function HelpPage() {
   return (
@@ -135,84 +136,125 @@ export default function HelpPage() {
             </ol>
           </Accordion>
         </div>
-        <div className='col-start-1 col-end-13 lg:col-start-8 lg:col-end-13'>
-          <div className='status-meaning-box'>
+        <div className='col-start-1 col-end-13 lg:col-start-8 lg:col-end-13 flex flex-col gap-8'>
+          <div className='flex flex-col gap-3.75 py-7.5 px-5.75 rounded-xl bg-bg-tertiary border border-border-primary'>
             <div className='status-meaning-header'>
-              <span className='eyebrow-heading'>Status Meanings</span>
+              <span className='eyebrow-heading text-[11px]'>
+                Status Meanings
+              </span>
               <p className='title font-size-16'>What does each status mean?</p>
             </div>
-            <div className='status-meaning-content'>
-              <div className='status-meaning-list'>
+            <div className='flex flex-col gap-2.5'>
+              <div className='flex items-center gap-2.5'>
                 <span className='tag submitted-tag'>
-                  <img src='/img/icons/time-icon.svg' alt='submitted-icon' />
+                  <img
+                    src='/src/assets/icon/time-icon.svg'
+                    alt='submitted-icon'
+                  />
                   Submitted
                 </span>
-                <p>
+                <p className='flex-1 font-normal text-xs font-publicSans text-font-secondary'>
                   Your report was submitted and received by our intake router.
                 </p>
               </div>
-              <div className='status-meaning-list'>
+              <div className='flex items-center gap-2.5'>
                 <span className='tag received-tag'>
-                  <img src='/img/icons/received-icon.svg' alt='received-icon' />
+                  <img
+                    src='/src/assets/icon/received-icon.svg'
+                    alt='received-icon'
+                  />
                   Received
                 </span>
-                <p>Verified by WargaReport and queued for agency dispatch.</p>
+                <p className='flex-1 font-normal text-xs font-publicSans text-font-secondary'>
+                  Verified by WargaReport and queued for agency dispatch.
+                </p>
               </div>
-              <div className='status-meaning-list'>
+              <div className='flex items-center gap-2.5'>
                 <span className='tag inreview-tag'>
-                  <img src='/img/icons/search-icon.svg' alt='inreview-icon' />
+                  <img
+                    src='/src/assets/icon/search-icon.svg'
+                    alt='inreview-icon'
+                  />
                   In review
                 </span>
-                <p>
+                <p className='flex-1 font-normal text-xs font-publicSans text-font-secondary'>
                   Agency coordinators are assessing field safety and equipment.
                 </p>
               </div>
-              <div className='status-meaning-list'>
+              <div className='flex items-center gap-2.5'>
                 <span className='tag assigned-tag'>
-                  <img src='/img/icons/asigned-icon.svg' alt='assigned-icon' />
+                  <img
+                    src='/src/assets/icon/asigned-icon.svg'
+                    alt='assigned-icon'
+                  />
                   Assigned
                 </span>
-                <p>A field crew or technician is dispatched to the street.</p>
+                <p className='flex-1 font-normal text-xs font-publicSans text-font-secondary'>
+                  A field crew or technician is dispatched to the street.
+                </p>
               </div>
-              <div className='status-meaning-list'>
+              <div className='flex items-center gap-2.5'>
                 <span className='tag awaiting-tag'>
-                  <img src='/img/icons/alert-icon.svg' alt='awaiting-icon' />
+                  <img
+                    src='/src/assets/icon/alert-icon.svg'
+                    alt='awaiting-icon'
+                  />
                   Awaiting your info
                 </span>
-                <p>Inspector needs clarification or an downdated photo.</p>
+                <p className='flex-1 font-normal text-xs font-publicSans text-font-secondary'>
+                  Inspector needs clarification or an downdated photo.
+                </p>
               </div>
-              <div className='status-meaning-list'>
+              <div className='flex items-center gap-2.5'>
                 <span className='tag resolved-tag'>
-                  <img src='/img/icons/check-icon.svg' alt='resolved-icon' />
+                  <img
+                    src='/src/assets/icon/check-icon.svg'
+                    alt='resolved-icon'
+                  />
                   Resolved
                 </span>
-                <p>
+                <p className='flex-1 font-normal text-xs font-publicSans text-font-secondary'>
                   Physical fix completed and inspection statement published.
                 </p>
               </div>
-              <div className='status-meaning-list'>
+              <div className='flex items-center gap-2.5'>
                 <span className='tag closed-tag'>
-                  <img src='/img/icons/archieve-icon.svg' alt='closed-icon' />
+                  <img
+                    src='/src/assets/icon/archieve-icon.svg'
+                    alt='closed-icon'
+                  />
                   Closed
                 </span>
-                <p>Case completed and archived.</p>
+                <p className='flex-1 font-normal text-xs font-publicSans text-font-secondary'>
+                  Case completed and archived.
+                </p>
               </div>
             </div>
           </div>
-          <div className='emergency-card'>
-            <div>
+          <div className='flex flex-col gap-3 p-5.25 rounded-2xl bg-bg-warning border border-border-warning'>
+            <div className='font-publicSans flex items-center gap-1.75 text-[13px] font-semibold text-font-warning'>
               <div>
-                <img src='/img/icons/call-icon.svg' alt='call-icon' />
+                <img src='/src/assets/icon/call-icon.svg' alt='call-icon' />
               </div>
               <p>Is this an acute life-safety emergency?</p>
             </div>
-            <p>
+            <p className='text-[13px] font-normal text-font-secondary'>
               WargaReport is for non-urgent municipal infrastructure. If there
               is an active fire, medical crisis, or immediate hazard to life:
             </p>
-            <div>
-              <button>Call 112 (National Emergency)</button>
-              <button>Call 113 (Fire Dispatch)</button>
+            <div className='flex items-center gap-2'>
+              <Button
+                btnText='Call 112 (National Emergency)'
+                variant='button-basic'
+                btnCustomStyles='py-1.75 px-2.5 rounded-full border border-border-warning bg-bg-tertiary'
+                btnTextCustomStyles='text-xs font-semibold font-ibmPlexMono text-font-warning'
+              />
+              <Button
+                btnText='Call 113 (Fire Dispatch)'
+                variant='button-basic'
+                btnCustomStyles='py-1.75 px-2.5 rounded-full border border-border-warning bg-bg-tertiary'
+                btnTextCustomStyles='text-xs font-semibold font-ibmPlexMono text-font-warning'
+              />
             </div>
           </div>
         </div>
