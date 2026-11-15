@@ -15,8 +15,6 @@ export default function SmallReportCard(props) {
     numberOfUpVote,
   } = props.item;
 
-  console.log(props.item);
-
   return (
     <div className='w-full h-fit flex flex-col md:flex-row gap-0 md:gap-3.5 p-0 md:p-3.75 border border-border-primary bg-bg-tertiary rounded-[18px] '>
       <div className='group w-full h-[40%] rounded-tl-xl rounded-tr-xl rounded-bl-none rounded-br-none md:w-24 md:h-24 md:rounded-xl overflow-hidden bg-cover bg-center'>
