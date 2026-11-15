@@ -54,8 +54,8 @@ export default function Button(props) {
         <span
           className={`font-publicSans font-semibold text-xs ${btnTextCustomStyles}`}>
           {btnText}
-          <img src={btnImg[1]} alt={btnAlt[1]} />
         </span>
+        <img src={btnImg[1]} alt={btnAlt[1]} />
       </button>
     );
   } else {
