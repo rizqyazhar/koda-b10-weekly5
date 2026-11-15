@@ -3,8 +3,8 @@ import { Link } from "react-router";
 export default function Footer() {
   return (
     <footer className='w-full h-fit pt-13 pb-6 flex justify-center bg-bg-tertiary border-t border-border-secondary'>
-      <div className='w-full flex flex-col gap-11 px-7.5 md:px-10 lg:px-25 py-3 md:py-4'>
-        <div className='flex justify-between gap-17'>
+      <div className='w-full flex flex-col gap-11 lg:gap-17 px-7.5 md:px-10 lg:px-25 py-3 md:py-4'>
+        <div className='flex justify-between flex-col lg:flex-row gap-12 lg:gap-17'>
           <div className='w-full lg:w-[40%] flex flex-col gap-4'>
             <Link
               to={"/"}
@@ -22,7 +22,7 @@ export default function Footer() {
               Emergency Call Center) or BPBD DKI directly.
             </p>
           </div>
-          <div className='flex-1 grid grid-cols-3 lg:gap-7'>
+          <div className='flex-1 grid grid-cols-2 lg:grid-cols-3 gap-7'>
             <div className='flex flex-col gap-1'>
               <p className='font-ibmPlexMono font-medium text-[11px] text-bg-primary uppercase tracking-[1px]'>
                 Citizens
@@ -70,7 +70,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className='w-full pt-5 flex flex-col lg:flex-row gap-5 lg:gap-0 items-center justify-between border-t border-border-primary font-normal text-xs text-font-tertiary'>
+        <div className='w-full pt-5 flex flex-col lg:flex-row gap-5 lg:gap-0 items-start lg:items-center justify-between border-t border-border-primary font-normal text-xs text-font-tertiary'>
           <p className='font-publicSans'>
             &copy; 2026 WargaReport. All rights reserved.
           </p>
