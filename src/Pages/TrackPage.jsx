@@ -1,6 +1,7 @@
 import Input from "../components/Input";
 import MainLayout from "../layouts/MainLayout";
 import Button from "../components/Button";
+import { Link } from "react-router";
 
 export default function TrackPage() {
   return (
@@ -55,6 +56,34 @@ export default function TrackPage() {
               <span class='font-normal text-font-tertiary'>&#xb7;</span>
               <span>CMP-2026-8794 (Resolved) </span>
             </div>
+          </div>
+        </div>
+        <div class='col-start-1 col-end-13 lg:col-start-8 lg:col-end-13 flex flex-col gap-5 pt-2.5 font-publicSans text-[11px] md:text-[13px] '>
+          <div className='w-full flex gap-1.5 md:gap-3'>
+            <div>
+              <div class='w-5 h-5'>
+                <img
+                  className='w-full h-full'
+                  src='/src/assets/icon/help-icon.svg'
+                  alt='help-icon'
+                />
+              </div>
+            </div>
+            <div className='flex flex-col gap-3.75 font-normal text-font-secondary'>
+              <p>
+                Your tracking ID was displayed on your confirmation receipt and
+                sent to your registered email address immediately upon intake.
+              </p>
+              <p>
+                Reports filed anonymously can only be tracked using this unique
+                key; officers cannot retrieve records by name without it.
+              </p>
+            </div>
+          </div>
+          <div className='pt-4.5 border-t border-t-border-primary font-semibold'>
+            <Link to={"/live-feed"} className='text-bg-primary'>
+              Lost your tracking ID? Search recent reports by location &rarr;
+            </Link>
           </div>
         </div>
       </div>
