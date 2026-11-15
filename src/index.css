@@ -76,7 +76,13 @@
   font-size: 11px;
 }
 
-@utility inreview-tag, awaiting-tag {
+@utility inreview-tag {
+  border: 1px solid var(--color-border-inreview);
+  background-color: var(--color-bg-inreview);
+  color: var(--color-font-inreview);
+}
+
+@utility awaiting-tag {
   border: 1px solid var(--color-border-inreview);
   background-color: var(--color-bg-inreview);
   color: var(--color-font-inreview);
