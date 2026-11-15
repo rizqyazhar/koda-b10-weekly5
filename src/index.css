@@ -62,3 +62,52 @@
   font-family: var(--font-publicSans);
   color: var(--color-bg-primary);
 }
+
+@utility tag {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-family: var(--font-publicSans);
+  font-weight: 600;
+  font-size: 11px;
+}
+
+@utility inreview-tag, awaiting-tag {
+  border: 1px solid var(--color-border-inreview);
+  background-color: var(--color-bg-inreview);
+  color: var(--color-font-inreview);
+}
+
+@utility assigned-tag {
+  border: 1px solid var(--color-border-assigned);
+  background-color: var(--color-bg-assigned);
+  color: var(--color-font-assigned);
+}
+
+@utility submitted-tag {
+  border: 1px solid var(--color-border-primary);
+  background-color: var(--color-bg-closed);
+  color: var(--color-font-secondary);
+}
+
+@utility received-tag {
+  border: 1px solid var(--color-border-tertiary);
+  background-color: var(--color-bg-quaternary);
+  color: var(--color-bg-primary);
+}
+
+@utility resolved-tag {
+  border: 1px solid var(--color-border-resolved);
+  background-color: var(--color-bg-resolved);
+  color: var(--color-font-resolved);
+}
+
+@utility closed-tag {
+  border: 1px solid var(--color-border-primary);
+  background-color: var(--color-bg-closed);
+  color: var(--color-font-tertiary);
+}
