@@ -10,7 +10,7 @@ export default function HomePage() {
     <MainLayout>
       <section className='flex flex-col gap-7 py-2.5'>
         <div className='flex flex-col gap-2.5 md:gap-3.5 lg:gap-4.5'>
-          <h1 className='lg:max-w-2xl font-semibold text-font-primary font-fraunces text-[50px] leading-13'>
+          <h1 className='lg:max-w-2xl font-semibold text-font-primary font-fraunces text-4xl lg:text-[50px] leading-13'>
             See something broken? Snap it. We push the city to fix it.
           </h1>
           <p className='lg:max-w-142 font-normal text-font-secondary font-publicSans text-[15px] lg:text-[17px]'>
