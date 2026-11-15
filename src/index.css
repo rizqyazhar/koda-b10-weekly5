@@ -54,3 +54,11 @@
   color: var(--color-font-secondary);
   font-family: var(--font-publicSans);
 }
+
+@utility btn-nav {
+  font-weight: 600;
+  font-size: 12px;
+  text-decoration: none;
+  font-family: var(--font-publicSans);
+  color: var(--color-bg-primary);
+}
