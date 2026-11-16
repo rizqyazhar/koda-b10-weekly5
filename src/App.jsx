@@ -3,7 +3,7 @@ import HomePage from "./Pages/HomePage";
 import { RouterProvider } from "react-router/dom";
 import TrackPage from "./Pages/TrackPage";
 import HelpPage from "./Pages/HelpPage";
-import LiveFeed from "./Pages/LiveFeed";
+import LiveFeedPage from "./Pages/LiveFeedPage";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +12,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/live-feed",
-    element: <LiveFeed />,
+    element: <LiveFeedPage />,
   },
   {
     path: "/track",
