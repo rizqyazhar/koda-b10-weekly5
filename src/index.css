@@ -131,3 +131,11 @@
   color: var(--color-font-tertiary);
   letter-spacing: 1.1px;
 }
+
+@utility search-icon {
+  width: 15px;
+  height: 15px;
+  background-color: var(--color-font-tertiary);
+  mask: url("./assets/icon/search-icon.svg") no-repeat center;
+  mask-size: cover;
+}
