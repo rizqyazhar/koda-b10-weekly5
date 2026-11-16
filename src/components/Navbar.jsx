@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <header className='w-full sticky top-0 z-10 flex justify-center bg-bg-tertiary border-b border-border-secondary'>
       <nav className='w-full px-7.5 md:px-10 lg:px-25 py-3 md:py-4 flex justify-between items-center'>
-        <Link className='flex items-center gap-1 md:gap-1.5 lg:gap-2'>
+        <Link to={"/"} className='flex items-center gap-1 md:gap-1.5 lg:gap-2'>
           <img src='/src/assets/icon/logo.svg' alt='warga-report-logo' />
           <span className='font-fraunces font-bold text-base lg:text-lg text-font-primary'>
             WargaReport
