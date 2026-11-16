@@ -1,4 +1,6 @@
+import FeedContentCard from "../components/FeedContentCard";
 import MainLayout from "../layouts/MainLayout";
+import { communityReportData } from "../lib/data";
 
 export default function LiveFeedPage() {
   return (
@@ -266,8 +268,12 @@ export default function LiveFeedPage() {
               With photos/proof only
             </label>
           </div>
-          <div className='feed-content-lists'>
-            <div className='feed-contents'></div>
+          <div className='w-full h-125 border border-border-primary rounded-[20px] bg-bg-tertiary overflow-hidden'>
+            <div className='w-full h-full flex flex-col overflow-y-auto rounded-[20px] scrollbar-thin'>
+              {communityReportData.map((item, index) => {
+                return <FeedContentCard key={index} item={item} />;
+              })}
+            </div>
           </div>
         </div>
       </section>
