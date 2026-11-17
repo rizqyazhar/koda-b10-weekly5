@@ -39,12 +39,14 @@ export default function HomePage() {
             btnCustomStyles='bg-bg-primary px-5.5 py-3.25'
             btnTextCustomStyles='font-publicSans font-semibold text-xs text-font-quaternary'
           />
-          <Button
-            btnText='Track a case'
-            variant='button-basic'
-            btnCustomStyles='bg-bg-tertiary border border-border-secondary px-5.5 py-3.25'
-            btnTextCustomStyles='font-publicSans font-semibold text-xs text-font-primary'
-          />
+          <Link to={"/live-feed"}>
+            <Button
+              btnText='Track a case'
+              variant='button-basic'
+              btnCustomStyles='bg-bg-tertiary border border-border-secondary px-5.5 py-3.25'
+              btnTextCustomStyles='font-publicSans font-semibold text-xs text-font-primary'
+            />
+          </Link>
         </div>
         <div className='flex items-center justify-center  lg:justify-start gap-2.5 font-ibmPlexMono'>
           <p className='flex flex-col items-center gap-0.5 lg:flex-row lg:items-start lg:gap-2 text-[10px] lg:text-xs text-font-secondary'>
