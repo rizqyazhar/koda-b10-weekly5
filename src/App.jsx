@@ -6,6 +6,7 @@ import HelpPage from "./Pages/HelpPage";
 import LiveFeedPage from "./Pages/LiveFeedPage";
 import DetailReportPage from "./Pages/DetailReportPage";
 import { GetTokenContext } from "./contexts/AuthContext";
+import { useState } from "react";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,9 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-  const [token, setToken] = window.localStorage.getItem("token");
+  const [token, setToken] = useState(
+    window.localStorage.getItem("token") || "",
+  );
 
   return (
     <GetTokenContext.Provider value={[token, setToken]}>

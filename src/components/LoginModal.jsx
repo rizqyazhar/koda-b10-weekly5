@@ -1,9 +1,10 @@
 import AuthLayout from "../layouts/AuthLayout";
 import Button from "../components/Button";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { GetTokenContext } from "../contexts/AuthContext";
 
 const schema = yup.object({
   email: yup.string().email("Email tidak valid").required("Email harus diisi"),
@@ -15,7 +16,7 @@ export default function LoginModal(props) {
     JSON.parse(window.localStorage.getItem("user-account")),
   );
 
-  const [getToken, setToken] = useState("");
+  const [token, setToken] = useContext(GetTokenContext);
 
   const findAccount = (email) => {
     return getData?.find((item) => item.email === email);
@@ -60,9 +61,9 @@ export default function LoginModal(props) {
   };
 
   useEffect(() => {
-    window.localStorage.setItem("token", JSON.stringify(getToken));
+    window.localStorage.setItem("token", JSON.stringify(token));
     setOpenLoginModal((prev) => !prev);
-  }, [getToken, setOpenLoginModal]);
+  }, [token, setOpenLoginModal]);
 
   return (
     <AuthLayout>
