@@ -1,11 +1,41 @@
 import AuthLayout from "../layouts/AuthLayout";
 import Button from "../components/Button";
-import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const schema = yup.object({
+  email: yup.string().email("Email tidak valid").required("Email harus diisi"),
+  password: yup.string().required("Password harus diisi"),
+});
 
 export default function LoginModal(props) {
+  const [getData] = useState(
+    JSON.parse(window.localStorage.getItem("user-account")),
+  );
+
+  const [getToken, setToken] = useState("");
+
+  const findAccount = (email) => {
+    return getData?.find((item) => item.email === email);
+  };
+
   const { setOpenLoginModal, setOpenRegisterModal } = props;
   const [showPassword, setShowPassword] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    resolver: yupResolver(schema),
+  });
 
   const handleCloseModal = () => {
     setOpenLoginModal(false);
@@ -16,7 +46,23 @@ export default function LoginModal(props) {
     setOpenRegisterModal((prev) => !prev);
   };
 
-  const navigate = useNavigate();
+  const handleLoginForm = (data) => {
+    const account = findAccount(data.email);
+
+    if (!account)
+      return console.log("akun belom ada, harap register terlebih dahulu");
+
+    if (!(account?.email === data.email && account?.password === data.password))
+      return console.log("email atau password salah");
+
+    setToken(account.email);
+    reset();
+  };
+
+  useEffect(() => {
+    window.localStorage.setItem("token", JSON.stringify(getToken));
+    setOpenLoginModal((prev) => !prev);
+  }, [getToken, setOpenLoginModal]);
 
   return (
     <AuthLayout>
@@ -62,7 +108,9 @@ export default function LoginModal(props) {
               Register as Citizen
             </button>
           </div>
-          <form className='flex flex-col gap-2 lg:gap-3'>
+          <form
+            onSubmit={handleSubmit(handleLoginForm)}
+            className='flex flex-col gap-2 lg:gap-3'>
             <div className='flex flex-col gap-1.5'>
               <label
                 htmlFor='email-input'
@@ -83,12 +131,14 @@ export default function LoginModal(props) {
                   id='email-input'
                   className='border-none outline-none w-full font-normal text-[13px] bg-inherit text-font-primary font-publicSans placeholder:text-[10px] lg:placeholder:text-xs placeholder:text-font-tertiary'
                   type='email'
-                  name='email'
+                  {...register("email")}
                   placeholder='Enter your Email'
                   autoComplete='email'
-                  required
                 />
               </div>
+              <p className='text-font-warning text-xs'>
+                {errors.email?.message}
+              </p>
             </div>
             <div className='flex flex-col gap-1.5'>
               <label
@@ -109,10 +159,9 @@ export default function LoginModal(props) {
                     id='password-input'
                     className='border-none outline-none w-full font-normal text-[13px] bg-inherit text-font-primary font-publicSans placeholder:text-[10px] lg:placeholder:text-xs placeholder:text-font-tertiary'
                     type={showPassword ? "text" : "password"}
-                    name='password'
+                    {...register("password")}
                     placeholder='Enter your Password'
                     autoComplete='current-password'
-                    required
                   />
                   <button
                     onClick={() => setShowPassword((prev) => !prev)}
@@ -131,9 +180,11 @@ export default function LoginModal(props) {
                   </button>
                 </div>
               </div>
+              <p className='text-font-warning text-xs'>
+                {errors.password?.message}
+              </p>
             </div>
             <Button
-              onClick={() => navigate("/add-report")}
               type='submit'
               btnText='Sign In'
               btnImg={["/src/assets/icon/arrow-right-white.svg"]}
