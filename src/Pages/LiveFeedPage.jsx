@@ -1,8 +1,16 @@
+import { useEffect, useState } from "react";
 import FeedContentCard from "../components/FeedContentCard";
 import MainLayout from "../layouts/MainLayout";
-import { communityReportData } from "../lib/data";
 
 export default function LiveFeedPage() {
+  const [datas, setDatas] = useState();
+
+  useEffect(() => {
+    fetch("/data/report-data.json")
+      .then((res) => res.json())
+      .then((data) => setDatas(data));
+  }, []);
+
   return (
     <MainLayout>
       <section className='flex flex-col lg:flex-row items-start gap-5 lg:gap-0 justify-between lg:items-end '>
@@ -270,7 +278,7 @@ export default function LiveFeedPage() {
           </div>
           <div className='w-full h-125 border border-border-primary rounded-[20px] bg-bg-tertiary overflow-hidden'>
             <div className='w-full h-full flex flex-col overflow-y-auto rounded-[20px] scrollbar-thin'>
-              {communityReportData.map((item, index) => {
+              {datas?.map((item, index) => {
                 return <FeedContentCard key={index} item={item} />;
               })}
             </div>

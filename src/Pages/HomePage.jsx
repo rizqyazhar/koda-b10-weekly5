@@ -1,11 +1,19 @@
+import { useState, useEffect } from "react";
 import MainLayout from "../layouts/MainLayout";
 import Button from "../components/Button";
-import { communityReportData, reportFlowOverviewText } from "../lib/data";
+import { reportFlowOverviewText } from "../lib/data";
 import ReportFlowCard from "../components/ReportFlowCard";
 import { Link } from "react-router";
 import SmallReportCard from "../components/SmallReportCard";
 
 export default function HomePage() {
+  const [datas, setDatas] = useState();
+
+  useEffect(() => {
+    fetch("/data/report-data.json")
+      .then((res) => res.json())
+      .then((data) => setDatas(data));
+  }, []);
   return (
     <MainLayout>
       <section className='flex flex-col gap-7 py-2.5'>
@@ -80,7 +88,7 @@ export default function HomePage() {
           </Link>
         </div>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
-          {communityReportData.slice(0, 4).map((item, index) => {
+          {datas?.slice(0, 4).map((item, index) => {
             return <SmallReportCard key={index} item={item} />;
           })}
         </div>
