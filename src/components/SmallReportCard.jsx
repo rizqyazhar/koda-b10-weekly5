@@ -3,6 +3,8 @@ import { Link } from "react-router";
 
 export default function SmallReportCard(props) {
   const {
+    id,
+    slug,
     srcImg,
     altImg,
     variantTag,
@@ -50,7 +52,9 @@ export default function SmallReportCard(props) {
             btnCustomStyles='bg-inherit border border-border-secondary rounded-full'
             btnTextCustomStyles='text-font-secondary font-ibmPlexMono text-[11px]'
           />
-          <Link className='btn-nav flex flex-col gap-1'>
+          <Link
+            to={`/detail-report/${id}/${slug}`}
+            className='btn-nav flex flex-col gap-1'>
             Inspect
             <span>&rarr;</span>
           </Link>
