@@ -22,7 +22,6 @@ export default function Navbar() {
 
   useEffect(() => {
     window.localStorage.setItem("token", token);
-    console.log(token);
   }, [token]);
 
   return (
