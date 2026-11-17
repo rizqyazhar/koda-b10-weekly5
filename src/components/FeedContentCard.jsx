@@ -2,6 +2,8 @@ import { Link } from "react-router";
 
 export default function FeedContentCard(props) {
   const {
+    id,
+    slug,
     srcImg,
     altImg,
     variantTag,
@@ -64,7 +66,9 @@ export default function FeedContentCard(props) {
           {numberOfProof} proof
         </span>
         <span className='text-font-tertiary text-[13px]'>{reportDate}</span>
-        <Link to={"/detail-report"} className='btn-nav flex items-center gap-1'>
+        <Link
+          to={`/detail-report/${id}/${slug}`}
+          className='btn-nav flex items-center gap-1'>
           Track
           <span className='proof-number'>
             <img
