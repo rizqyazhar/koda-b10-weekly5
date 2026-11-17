@@ -173,3 +173,55 @@
   font-weight: 400;
   color: var(--color-font-tertiary);
 }
+
+@utility line-history {
+  &::before {
+    content: "";
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-border-secondary);
+  }
+}
+
+@utility icon-history-list {
+  &::before {
+    content: "";
+    width: 22px;
+    height: 22px;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    left: -1.4%;
+    background-color: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border-secondary);
+    background-repeat: no-repeat;
+    background-position: center;
+    @media (width <= 768px) {
+      left: -1.7%;
+    }
+    @media (width <= 640px) {
+      left: -3.3%;
+    }
+  }
+}
+
+@utility icon-history-list {
+  &:nth-child(1):before {
+    background-image: url(/src/assets/icon/profile-icon-green.svg);
+  }
+}
+
+@utility icon-history-list {
+  &:nth-child(2):before {
+    background-image: url(/src/assets/icon/chip-icon-green.svg);
+  }
+}
+
+@utility icon-history-list {
+  &:nth-child(3):before {
+    background-image: url(/src/assets/icon/accepted-icon-green.svg);
+  }
+}
