@@ -1,13 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import MainLayout from "../layouts/MainLayout";
 import Button from "../components/Button";
 import { reportFlowOverviewText } from "../lib/data";
 import ReportFlowCard from "../components/ReportFlowCard";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import SmallReportCard from "../components/SmallReportCard";
+import { GetTokenContext } from "../contexts/AuthContext";
 
 export default function HomePage() {
+  const [token] = useContext(GetTokenContext);
+
   const [datas, setDatas] = useState();
+
+  const navigate = useNavigate();
+
+  const handleSnapReportBtn = () => {
+    if (!token) return;
+
+    navigate("/add-report");
+  };
 
   useEffect(() => {
     fetch("/data/report-data.json")
@@ -29,6 +40,8 @@ export default function HomePage() {
         </div>
         <div className='flex items-center gap-3'>
           <Button
+            onClick={handleSnapReportBtn}
+            type='button'
             btnText='Snap a report'
             btnImg={[
               "/src/assets/icon/camera-icon.svg",
