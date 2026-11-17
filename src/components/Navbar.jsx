@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router";
 import Button from "./Button";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import LoginModal from "./LoginModal";
 import RegisterModal from "./RegisterModal";
 import { GetTokenContext } from "../contexts/AuthContext";
@@ -15,6 +15,15 @@ export default function Navbar() {
   const handleOpenModalProfile = () => {
     setOpenModalProfile((prev) => !prev);
   };
+
+  const handleLogout = () => {
+    setToken("");
+  };
+
+  useEffect(() => {
+    window.localStorage.setItem("token", token);
+    console.log(token);
+  }, [token]);
 
   return (
     <header className='w-full sticky top-0 z-10 flex justify-center bg-bg-tertiary border-b border-border-secondary'>
@@ -91,7 +100,10 @@ export default function Navbar() {
                       My Filed Reports
                     </span>
                   </Link>
-                  <button className='flex items-center gap-2 px-4 py-3 hover:bg-bg-quaternary cursor-pointer'>
+                  <button
+                    onClick={handleLogout}
+                    type='button'
+                    className='flex items-center gap-2 px-4 py-3 hover:bg-bg-quaternary cursor-pointer'>
                     <div className='logout-icon'></div>
                     <span className='font-publicSans font-medium text-xs text-font-warning'>
                       Sign Out
