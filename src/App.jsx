@@ -4,6 +4,7 @@ import { RouterProvider } from "react-router/dom";
 import TrackPage from "./Pages/TrackPage";
 import HelpPage from "./Pages/HelpPage";
 import LiveFeedPage from "./Pages/LiveFeedPage";
+import DetailReportPage from "./Pages/DetailReportPage";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/help",
     element: <HelpPage />,
+  },
+  {
+    path: "/detail-report/:id/:slug",
+    element: <DetailReportPage />,
   },
 ]);
 
