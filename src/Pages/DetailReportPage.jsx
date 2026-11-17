@@ -1,7 +1,19 @@
-import { Link } from "react-router";
+import { Link, useParams } from "react-router";
 import MainLayout from "../layouts/MainLayout";
+import { useEffect, useState } from "react";
 
 export default function DetailReportPage() {
+  const { id } = useParams();
+  const [datas, setDatas] = useState();
+
+  useEffect(() => {
+    fetch("/data/report-data.json")
+      .then((res) => res.json())
+      .then((data) => setDatas(data));
+  }, []);
+
+  const dataFound = datas?.find((data) => data.id === Number(id));
+
   return (
     <MainLayout>
       <div className='w-full flex items-center justify-between font-semibold font-publicSans'>
@@ -59,15 +71,9 @@ export default function DetailReportPage() {
               </button>
             </div>
             <div className='flex flex-col gap-4.5'>
-              <h1 className='title text-[30px]'>
-                PAM clean drinking water pipeline burst flooding sidewalk in
-                front of Cipete Raya MRT
-              </h1>
+              <h1 className='title text-[30px]'>{dataFound?.titleReport}</h1>
               <p className='description text-[14px]'>
-                Clean drinking water is bursting through the sidewalk pavement
-                outside Jl. Fatmawati Raya No. 42 (RT 04 / RW 07, Cilandak
-                Barat) right in front of Cipete Raya MRT. Clean water has been
-                flooding the roadway for 4 hours, causing motorbikes to slip.
+                {dataFound?.descriptionReport}
               </p>
             </div>
             <div className='flex flex-col border-t border-border-primary pt-4.5 gap-2.5'>
@@ -110,29 +116,29 @@ export default function DetailReportPage() {
               </div>
             </div>
           </section>
-          <section class='flex flex-col gap-3.25'>
-            <div class='flex flex-col gap-0.5'>
-              <h3 class='title text-[20px]'>Evidence on File</h3>
-              <p class='font-publicSans text-[12px] font-normal text-font-tertiary'>
+          <section className='flex flex-col gap-3.25'>
+            <div className='flex flex-col gap-0.5'>
+              <h3 className='title text-[20px]'>Evidence on File</h3>
+              <p className='font-publicSans text-[12px] font-normal text-font-tertiary'>
                 2 attachments (tap to expand)
               </p>
             </div>
-            <div class='grid grid-cols-2 gap-3.5'>
-              <div class='w-full rounded-[14px] border border-border-primary overflow-hidden'>
-                <div class='w-full h-[60%] md:h-[70%] bg-cover bg-center'>
+            <div className='grid grid-cols-2 gap-3.5'>
+              <div className='w-full rounded-[14px] border border-border-primary overflow-hidden'>
+                <div className='w-full h-[60%] md:h-[70%] bg-cover bg-center'>
                   <img
                     className='w-full h-full'
-                    src='/src/assets/img/img-1.jpg'
+                    src={dataFound?.srcImg}
                     alt='incident-photo'
                   />
                 </div>
-                <div class='w-full h-[30%] flex justify-between items-center py-1.5 md:py-3 lg:py-2.5 px-2.5 md:px-3.75 lg:px-3.25  bg-bg-tertiary'>
+                <div className='w-full h-[30%] flex justify-between items-center py-1.5 md:py-3 lg:py-2.5 px-2.5 md:px-3.75 lg:px-3.25  bg-bg-tertiary'>
                   <div className='flex flex-col gap-1'>
                     <p className='font-publicSans font-medium text-xs lg:text-sm text-font-primary'>
-                      pam_water_pipeline_fracture.jpg
+                      {dataFound?.altImg}
                     </p>
                     <p className='uppercase font-ibmPlexMono text-[10px] lg:text-xs font-normal text-font-tertiary'>
-                      IMAGE <span class='middle-dot'>&#xb7;</span> 2.4 MB
+                      IMAGE <span className='middle-dot'>&#xb7;</span> 2.4 MB
                     </p>
                     <p className='font-publicSans text-xs lg:text-sm text-font-secondary font-normal w-87 truncate'>
                       Water runoff flooding pedestrian sidewalk slabs and bike
@@ -141,21 +147,21 @@ export default function DetailReportPage() {
                   </div>
                 </div>
               </div>
-              <div class='w-full rounded-[14px] border border-border-primary overflow-hidden'>
-                <div class='w-full h-[60%] md:h-[70%] bg-cover bg-center'>
+              <div className='w-full rounded-[14px] border border-border-primary overflow-hidden'>
+                <div className='w-full h-[60%] md:h-[70%] bg-cover bg-center'>
                   <img
                     className='w-full h-full'
                     src='/src/assets/img/audio-clip-bg.png'
                     alt='incident-photo'
                   />
                 </div>
-                <div class='w-full h-[30%] flex justify-between items-center py-1.5 md:py-3 lg:py-2.5 px-2.5 md:px-3.75 lg:px-3.25  bg-bg-tertiary'>
+                <div className='w-full h-[30%] flex justify-between items-center py-1.5 md:py-3 lg:py-2.5 px-2.5 md:px-3.75 lg:px-3.25  bg-bg-tertiary'>
                   <div className='flex flex-col gap-1'>
                     <p className='font-publicSans font-medium text-xs lg:text-sm text-font-primary'>
                       acoustic_pipe_pressure_sound.m4a
                     </p>
                     <p className='uppercase font-ibmPlexMono text-[10px] lg:text-xs font-normal text-font-tertiary'>
-                      AUDIO <span class='middle-dot'>&#xb7;</span> 1.1 MB
+                      AUDIO <span className='middle-dot'>&#xb7;</span> 1.1 MB
                     </p>
                     <p className='font-publicSans text-xs lg:text-sm text-font-secondary font-normal w-87 truncate'>
                       Acoustic underground hissing recorded near customer meter
@@ -166,20 +172,20 @@ export default function DetailReportPage() {
               </div>
             </div>
           </section>
-          <section class='relative flex flex-col gap-3.75'>
-            <div class='flex flex-col gap-0.5'>
-              <h3 class='title text-[20px]'>Action History</h3>
-              <p class='font-publicSans text-[12px] font-normal text-font-tertiary'>
+          <section className='relative flex flex-col gap-3.75'>
+            <div className='flex flex-col gap-0.5'>
+              <h3 className='title text-[20px]'>Action History</h3>
+              <p className='font-publicSans text-[12px] font-normal text-font-tertiary'>
                 Chronological updates from intake router and field teams
               </p>
             </div>
-            <div class='relative flex flex-col gap-5.5 pl-0.5 line-history'>
-              <div class='flex flex-col gap-2.5 pl-5 relative icon-history-list'>
-                <div class='flex gap-1.75 items-center'>
-                  <p class='font-publicSans font-medium text-[13px] text-font-primary'>
+            <div className='relative flex flex-col gap-5.5 pl-0.5 line-history'>
+              <div className='flex flex-col gap-2.5 pl-5 relative icon-history-list'>
+                <div className='flex gap-1.75 items-center'>
+                  <p className='font-publicSans font-medium text-[13px] text-font-primary'>
                     Report submitted via WargaReport intake
                   </p>
-                  <span class='tag submitted-tag'>
+                  <span className='tag submitted-tag'>
                     <img
                       src='/src/assets/icon/time-icon.svg'
                       alt='submitted-icon'
@@ -187,28 +193,28 @@ export default function DetailReportPage() {
                     Submitted
                   </span>
                 </div>
-                <div class='flex items-center gap-1.75'>
-                  <p class='font-publicSans font-medium text-[11px] text-font-secondary'>
+                <div className='flex items-center gap-1.75'>
+                  <p className='font-publicSans font-medium text-[11px] text-font-secondary'>
                     Fahrul Septiana
                   </p>
-                  <span class='middle-dot'>&#xb7;</span>
-                  <span class='font-ibmPlexMono font-normal text-[11px] text-font-tertiary'>
+                  <span className='middle-dot'>&#xb7;</span>
+                  <span className='font-ibmPlexMono font-normal text-[11px] text-font-tertiary'>
                     Nov 6, 05:09 PM GMT+7
                   </span>
                 </div>
-                <div class='border border-border-primary rounded-xl p-3.25'>
-                  <p class='font-publicSans font-normal text-[12px] text-font-secondary'>
+                <div className='border border-border-primary rounded-xl p-3.25'>
+                  <p className='font-publicSans font-normal text-[12px] text-font-secondary'>
                     Citizen attached visual photo evidence and acoustic audio
                     note.
                   </p>
                 </div>
               </div>
-              <div class='flex flex-col gap-2.5 pl-5 relative icon-history-list'>
-                <div class='flex gap-1.75 items-center'>
-                  <p class='font-publicSans font-medium text-[13px] text-font-primary'>
+              <div className='flex flex-col gap-2.5 pl-5 relative icon-history-list'>
+                <div className='flex gap-1.75 items-center'>
+                  <p className='font-publicSans font-medium text-[13px] text-font-primary'>
                     Verified by WargaReport & dispatched to Perumda PAM JAYA
                   </p>
-                  <span class='tag received-tag'>
+                  <span className='tag received-tag'>
                     <img
                       src='/src/assets/icon/received-icon.svg'
                       alt='received-icon'
@@ -216,28 +222,28 @@ export default function DetailReportPage() {
                     Received
                   </span>
                 </div>
-                <div class='flex gap-1.75'>
-                  <p class='font-publicSans font-medium text-[11px] text-font-secondary'>
+                <div className='flex gap-1.75'>
+                  <p className='font-publicSans font-medium text-[11px] text-font-secondary'>
                     WargaReport Civic Router
                   </p>
-                  <span class='middle-dot'>&#xb7;</span>
-                  <span class='font-ibmPlexMono font-normal text-[11px] text-font-tertiary'>
+                  <span className='middle-dot'>&#xb7;</span>
+                  <span className='font-ibmPlexMono font-normal text-[11px] text-font-tertiary'>
                     Nov 6, 05:12 PM GMT+7
                   </span>
                 </div>
-                <div class='border border-border-primary rounded-xl p-3.25'>
-                  <p class='font-publicSans font-normal text-[12px] text-font-secondary'>
+                <div className='border border-border-primary rounded-xl p-3.25'>
+                  <p className='font-publicSans font-normal text-[12px] text-font-secondary'>
                     Priority: High. Clean water conservation target. 24h
                     statutory countdown initiated.
                   </p>
                 </div>
               </div>
-              <div class='flex flex-col gap-2.5 pl-5 relative icon-history-list'>
-                <div class='flex gap-1.75 items-center'>
-                  <p class='font-publicSans font-medium text-[13px] text-font-primary'>
+              <div className='flex flex-col gap-2.5 pl-5 relative icon-history-list'>
+                <div className='flex gap-1.75 items-center'>
+                  <p className='font-publicSans font-medium text-[13px] text-font-primary'>
                     Case accepted by Duty Triage Coordinator
                   </p>
-                  <span class='tag inreview-tag'>
+                  <span className='tag inreview-tag'>
                     <img
                       src='/src/assets/icon/search-icon.svg'
                       alt='inreview-icon'
@@ -245,17 +251,17 @@ export default function DetailReportPage() {
                     In review
                   </span>
                 </div>
-                <div class='flex gap-1.75'>
-                  <p class='font-publicSans font-medium text-[11px] text-font-secondary'>
+                <div className='flex gap-1.75'>
+                  <p className='font-publicSans font-medium text-[11px] text-font-secondary'>
                     Hendra Kurniawan
                   </p>
-                  <span class='middle-dot'>&#xb7;</span>
-                  <span class='font-ibmPlexMono font-normal text-[11px] text-font-tertiary'>
+                  <span className='middle-dot'>&#xb7;</span>
+                  <span className='font-ibmPlexMono font-normal text-[11px] text-font-tertiary'>
                     Nov 6, 06:39 PM GMT+7
                   </span>
                 </div>
-                <div class='border border-border-primary rounded-xl p-3.25'>
-                  <p class='font-publicSans font-normal text-[12px] text-font-secondary'>
+                <div className='border border-border-primary rounded-xl p-3.25'>
+                  <p className='font-publicSans font-normal text-[12px] text-font-secondary'>
                     Dispatched secondary valve isolation team from Cilandak
                     maintenance station.
                   </p>
@@ -268,7 +274,7 @@ export default function DetailReportPage() {
           <div>
             <span className='eyebrow-heading text-[11px]'>Tracking Code</span>
             <h2 className='text-xl font-ibmPlexMono font-semibold text-font-quinary'>
-              CMP-2026-8841
+              {dataFound?.codeReport}
             </h2>
           </div>
           <div className='border-t border-border-primary py-4.25 flex flex-col gap-3.25'>
@@ -277,7 +283,7 @@ export default function DetailReportPage() {
                 Assigned Authority
               </span>
               <p className='font-publicSans font-semibold text-[13px]'>
-                Perumda PAM JAYA (Clean Drinking Water)
+                {dataFound?.relevantOfficer}
               </p>
             </div>
             <div className='flex flex-col gap-0.5'>
@@ -285,7 +291,7 @@ export default function DetailReportPage() {
                 Category
               </span>
               <p className='font-publicSans font-normal text-[13px]'>
-                Water & Sewage
+                {dataFound?.problemCategory}
               </p>
             </div>
             <div className='flex flex-col gap-0.5'>
@@ -301,7 +307,7 @@ export default function DetailReportPage() {
                 </span>
                 <span className='flex flex-col gap-1.75 font-publicSans'>
                   <span className='font-medium text-[13px]'>
-                    Jl. Fatmawati Raya No. 42 (depan Stasiun MRT Cipete Raya)
+                    {dataFound?.address}
                   </span>
                   <span className='font-normal text-[11px] text-font-tertiary'>
                     Cilandak Barat, Jakarta Selatan
