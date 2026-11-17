@@ -320,3 +320,59 @@
   mask: url("./assets/icon/shield-icon.svg") no-repeat center;
   mask-size: cover;
 }
+
+@utility road-icon {
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-font-secondary);
+  mask: url("./assets/icon/road-icon.svg") no-repeat center;
+  mask-size: cover;
+}
+
+@utility water-icon {
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-font-secondary);
+  mask: url("./assets/icon/water-icon.svg") no-repeat center;
+  mask-size: cover;
+}
+
+@utility sun-icon {
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-font-secondary);
+  mask: url("./assets/icon/sun-icon.svg") no-repeat center;
+  mask-size: cover;
+}
+
+@utility trash-icon {
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-font-secondary);
+  mask: url("./assets/icon/trash-icon.svg") no-repeat center;
+  mask-size: cover;
+}
+
+@utility trees-icon {
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-font-secondary);
+  mask: url("./assets/icon/trees-icon.svg") no-repeat center;
+  mask-size: cover;
+}
+
+@utility speaker-icon {
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-font-secondary);
+  mask: url("./assets/icon/speaker-icon.svg") no-repeat center;
+  mask-size: cover;
+}
+
+@utility building-icon {
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-font-secondary);
+  mask: url("./assets/icon/building-icon.svg") no-repeat center;
+  mask-size: cover;
+}
