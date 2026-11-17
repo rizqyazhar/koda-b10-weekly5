@@ -312,3 +312,11 @@
   mask: url("./assets/icon/logout-icon.svg") no-repeat center;
   mask-size: cover;
 }
+
+@utility shield-icon {
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-bg-primary);
+  mask: url("./assets/icon/shield-icon.svg") no-repeat center;
+  mask-size: cover;
+}
