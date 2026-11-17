@@ -1,7 +1,11 @@
 import { Outlet, NavLink, Link } from "react-router";
 import MainLayout from "./MainLayout";
+import { FormContext } from "../contexts/FormContext";
+import { useState } from "react";
 
 export default function AddReportLayout() {
+  const [formReport, setFormReport] = useState({});
+
   return (
     <MainLayout>
       <div className='grid grid-cols-1 lg:grid-cols-12 gap-8 justify-center lg:justify-start'>
@@ -72,7 +76,9 @@ export default function AddReportLayout() {
             Cancel and return to feed
           </Link>
         </aside>
-        <Outlet />
+        <FormContext.Provider value={[formReport, setFormReport]}>
+          <Outlet />
+        </FormContext.Provider>
       </div>
     </MainLayout>
   );
