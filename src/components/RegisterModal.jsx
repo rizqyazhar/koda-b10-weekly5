@@ -1,16 +1,43 @@
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
 import AuthLayout from "../layouts/AuthLayout";
 import Button from "../components/Button";
-import { useState } from "react";
+
+const schema = yup.object({
+  fullname: yup.string().required("Nama harus diisi"),
+  email: yup.string().email().required("Email harus diisi"),
+  contact: yup.string().required("No telpon harus diisi"),
+  nik: yup.string(),
+  password: yup.string().required("Password harus diisi"),
+});
 
 export default function RegisterModal(props) {
+  const [userData, setUserData] = useState(
+    JSON.parse(window.localStorage.getItem("user-account")) || [],
+  );
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      fullname: "",
+      email: "",
+      contact: "",
+      nik: "",
+      password: "",
+    },
+    resolver: yupResolver(schema),
+  });
+
   const { setOpenLoginModal, setOpenRegisterModal } = props;
 
   const [showPassword, setShowPassword] = useState(false);
-
-  const handleMoveToLoginModal = () => {
-    setOpenLoginModal((prev) => !prev);
-    setOpenRegisterModal((prev) => !prev);
-  };
 
   const handleCloseModal = () => {
     setOpenRegisterModal(false);
@@ -20,6 +47,21 @@ export default function RegisterModal(props) {
     setOpenLoginModal((prev) => !prev);
     setOpenRegisterModal((prev) => !prev);
   };
+
+  const pushData = (data) => {
+    console.log(data);
+    const saveData = data;
+    setUserData((prev) => [...prev, saveData]);
+    console.log(userData);
+
+    reset();
+    return;
+  };
+
+  useEffect(() => {
+    console.log(userData);
+    window.localStorage.setItem("user-account", JSON.stringify(userData));
+  }, [userData]);
 
   return (
     <AuthLayout>
@@ -62,7 +104,9 @@ export default function RegisterModal(props) {
               Register as Citizen
             </button>
           </div>
-          <form className='flex flex-col gap-2 lg:gap-3'>
+          <form
+            onSubmit={handleSubmit(pushData)}
+            className='flex flex-col gap-2 lg:gap-3'>
             <div className='flex flex-col gap-1.5'>
               <label
                 htmlFor='fullname-input'
@@ -83,11 +127,13 @@ export default function RegisterModal(props) {
                   id='fullname-input'
                   className='border-none outline-none w-full font-normal text-[13px] bg-inherit text-font-primary font-publicSans placeholder:text-[10px] lg:placeholder:text-xs placeholder:text-font-tertiary'
                   type='text'
-                  name='fullname'
+                  {...register("fullname")}
                   placeholder='e.g. Budi Santoso'
-                  required
                 />
               </div>
+              <p className='text-font-warning text-xs'>
+                {errors.fullname?.message}
+              </p>
             </div>
             <div className='grid grid-cols-2 gap-2 lg:gap-3'>
               <div className='flex flex-col gap-1.5'>
@@ -110,12 +156,14 @@ export default function RegisterModal(props) {
                     id='email-input'
                     className='border-none outline-none w-full font-normal text-[13px] bg-inherit text-font-primary font-publicSans placeholder:text-[10px] lg:placeholder:text-xs placeholder:text-font-tertiary'
                     type='email'
-                    name='email'
+                    {...register("email")}
                     placeholder='e.g. budi@wargareport.id'
                     autoComplete='off'
-                    required
                   />
                 </div>
+                <p className='text-font-warning text-xs'>
+                  {errors.email?.message}
+                </p>
               </div>
               <div className='flex flex-col gap-1.5'>
                 <label
@@ -137,11 +185,13 @@ export default function RegisterModal(props) {
                     id='contact-input'
                     className='border-none outline-none w-full font-normal text-[13px] bg-inherit text-font-primary font-publicSans placeholder:text-[10px] lg:placeholder:text-xs placeholder:text-font-tertiary'
                     type='tel'
-                    name='contact'
+                    {...register("contact")}
                     placeholder='+62 812-...'
-                    required
                   />
                 </div>
+                <p className='text-font-warning text-xs'>
+                  {errors.contact?.message}
+                </p>
               </div>
             </div>
             <div className='flex flex-col gap-1.5'>
@@ -162,10 +212,9 @@ export default function RegisterModal(props) {
                   id='nik-input'
                   className='border-none outline-none w-full font-normal text-[13px] bg-inherit text-font-primary font-publicSans placeholder:text-[10px] lg:placeholder:text-xs placeholder:text-font-tertiary'
                   type='text'
-                  name='nik'
+                  {...register("nik")}
                   placeholder='16 digits for verified resident badge (e.g. 3174...)'
                   autoComplete='off'
-                  required
                 />
               </div>
               <small className='font-publicSans font-normal text-[10px] text-font-tertiary'>
@@ -192,10 +241,9 @@ export default function RegisterModal(props) {
                     id='password-input'
                     className='border-none outline-none w-full font-normal text-[13px] bg-inherit text-font-primary font-publicSans placeholder:text-[10px] lg:placeholder:text-xs placeholder:text-font-tertiary'
                     type={showPassword ? "text" : "password"}
-                    name='password'
+                    {...register("password")}
                     placeholder='Enter your Password'
                     autoComplete='current-password'
-                    required
                   />
                   <button
                     onClick={() => setShowPassword((prev) => !prev)}
@@ -214,11 +262,13 @@ export default function RegisterModal(props) {
                   </button>
                 </div>
               </div>
+              <p className='text-font-warning text-xs'>
+                {errors.password?.message}
+              </p>
             </div>
 
             <Button
-              onClick={handleMoveToLoginModal}
-              type='button'
+              type='submit'
               btnText='Create Account & Continue'
               btnImg={["/src/assets/icon/check-icon.svg"]}
               btnAlt={["check-icon"]}
