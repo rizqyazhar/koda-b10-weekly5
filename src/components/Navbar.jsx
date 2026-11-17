@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import Button from "./Button";
 import { useContext, useEffect, useState } from "react";
 import LoginModal from "./LoginModal";
@@ -12,12 +12,20 @@ export default function Navbar() {
 
   const [openModalProfile, setOpenModalProfile] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleOpenModalProfile = () => {
     setOpenModalProfile((prev) => !prev);
   };
 
   const handleLogout = () => {
     setToken("");
+  };
+
+  const handleAddReportBtn = () => {
+    if (!token) return;
+
+    navigate("/add-report");
   };
 
   useEffect(() => {
@@ -124,6 +132,7 @@ export default function Navbar() {
             />
           )}
           <Button
+            onClick={handleAddReportBtn}
             type='click'
             btnText='Report'
             btnImg={["/src/assets/icon/plus-icon.svg"]}
