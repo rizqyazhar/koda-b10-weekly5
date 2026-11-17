@@ -1,12 +1,20 @@
 import { Link, NavLink } from "react-router";
 import Button from "./Button";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import LoginModal from "./LoginModal";
 import RegisterModal from "./RegisterModal";
+import { GetTokenContext } from "../contexts/AuthContext";
 
 export default function Navbar() {
+  const [token, setToken] = useContext(GetTokenContext);
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [openRegisterModal, setOpenRegisterModal] = useState(false);
+
+  const [openModalProfile, setOpenModalProfile] = useState(false);
+
+  const handleOpenModalProfile = () => {
+    setOpenModalProfile((prev) => !prev);
+  };
 
   return (
     <header className='w-full sticky top-0 z-10 flex justify-center bg-bg-tertiary border-b border-border-secondary'>
@@ -47,16 +55,63 @@ export default function Navbar() {
           </NavLink>
         </div>
         <div className='flex items-center gap-2'>
-          <Button
-            onClick={() => setOpenLoginModal((prev) => !prev)}
-            type='click'
-            btnText='Sign In'
-            btnImg={["/src/assets/icon/login-icon.svg"]}
-            btnAlt={["login-icon"]}
-            variant='button-one-icon'
-            btnCustomStyles='bg-inherit'
-            btnTextCustomStyles='font-publicSans font-semibold text-xs text-font-secondary'
-          />
+          {token ? (
+            <div className='relative flex items-center gap-3'>
+              <Link to={"/notification"} className='notif-icon-box'>
+                <div className='notif-icon'></div>
+                <div className='green-circle'></div>
+              </Link>
+              <button
+                onClick={handleOpenModalProfile}
+                className='user-info-toggle cursor-pointer'>
+                <span className='user-photo'>FS</span>
+                <span className='flex flex-col items-start'>
+                  <span className='font-publicSans font-semibold text-xs text-font-primary'>
+                    Fahrul Septiana
+                  </span>
+                  <span className='font-ibmPlexMono font-normal text-[10px] text-bg-primary'>
+                    citizen
+                  </span>
+                </span>
+                <span className='chevron-down-icon'></span>
+              </button>
+              {openModalProfile && (
+                <div className='modal-profile-toggle flex flex-col transition-all duration-300 ease-in-out overflow-hidden'>
+                  <Link className='flex flex-col items-start px-4 py-3 hover:bg-bg-quaternary'>
+                    <span className='font-semibold text-[13px] text-font-primary'>
+                      Fahrul Septiana
+                    </span>
+                    <span className='font-normal text-[11px] font-ibmPlexMono text-font-tertiary'>
+                      fahrul@wargareport.id
+                    </span>
+                  </Link>
+                  <Link className='flex items-center gap-2 font-normal text-font-secondary px-4 py-3 hover:bg-bg-quaternary'>
+                    <span className='profile-icon w-3 h-3'></span>
+                    <span className='font-publicSans text-xs text-font-secondary'>
+                      My Filed Reports
+                    </span>
+                  </Link>
+                  <button className='flex items-center gap-2 px-4 py-3 hover:bg-bg-quaternary cursor-pointer'>
+                    <div className='logout-icon'></div>
+                    <span className='font-publicSans font-medium text-xs text-font-warning'>
+                      Sign Out
+                    </span>
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Button
+              onClick={() => setOpenLoginModal((prev) => !prev)}
+              type='click'
+              btnText='Sign In'
+              btnImg={["/src/assets/icon/login-icon.svg"]}
+              btnAlt={["login-icon"]}
+              variant='button-one-icon'
+              btnCustomStyles='bg-inherit'
+              btnTextCustomStyles='font-publicSans font-semibold text-xs text-font-secondary'
+            />
+          )}
           <Button
             type='click'
             btnText='Report'

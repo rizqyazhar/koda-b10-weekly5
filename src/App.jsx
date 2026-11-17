@@ -5,6 +5,7 @@ import TrackPage from "./Pages/TrackPage";
 import HelpPage from "./Pages/HelpPage";
 import LiveFeedPage from "./Pages/LiveFeedPage";
 import DetailReportPage from "./Pages/DetailReportPage";
+import { GetTokenContext } from "./contexts/AuthContext";
 
 const router = createBrowserRouter([
   {
@@ -30,5 +31,11 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  const [token, setToken] = window.localStorage.getItem("token");
+
+  return (
+    <GetTokenContext.Provider value={[token, setToken]}>
+      <RouterProvider router={router} />
+    </GetTokenContext.Provider>
+  );
 }

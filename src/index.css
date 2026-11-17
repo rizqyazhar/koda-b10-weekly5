@@ -148,6 +148,31 @@
   mask-size: cover;
 }
 
+@utility notif-icon {
+  width: 17px;
+  height: 17px;
+  background-color: var(--color-font-secondary);
+  mask: url("./assets/icon/notif-icon.svg") no-repeat center;
+  mask-size: cover;
+}
+
+@utility notif-icon-box {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+}
+
+@utility green-circle {
+  position: absolute;
+  top: -2px;
+  right: -1px;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-bg-tertiary);
+}
+
 @utility btn-like {
   width: fit-content;
   border: 1px solid var(--color-border-secondary);
@@ -224,4 +249,66 @@
   &:nth-child(3):before {
     background-image: url(/src/assets/icon/accepted-icon-green.svg);
   }
+}
+
+@utility user-info-toggle {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 11px 6px 6px;
+  border-radius: 20px;
+  border: 1px solid var(--color-border-secondary);
+}
+
+@utility user-photo {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  border: 1px solid var(--color-border-tertiary);
+  background-color: var(--color-bg-quaternary);
+  color: var(--color-font-quinary);
+  font-weight: 600;
+  font-size: 10px;
+  font-family: var(--font-ibmPlexMono);
+  text-transform: uppercase;
+}
+
+@utility chevron-down-icon {
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-font-tertiary);
+  mask: url("./assets/icon/chevron-down.svg") no-repeat center;
+  mask-size: cover;
+}
+
+@utility modal-profile-toggle {
+  width: fit-content;
+  position: absolute;
+  top: 120%;
+  right: 0;
+  border-radius: 14px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-secondary);
+}
+
+@utility profile-icon {
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-font-tertiary);
+  mask: url("./assets/icon/profile-icon.svg") no-repeat center;
+  mask-size: cover;
+}
+
+@utility logout-icon {
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-font-warning);
+  mask: url("./assets/icon/logout-icon.svg") no-repeat center;
+  mask-size: cover;
 }
