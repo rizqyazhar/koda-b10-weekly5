@@ -14,6 +14,11 @@ import ProofReportPage from "./Pages/ProofReportPage";
 import ReviewSendReportPage from "./Pages/ReviewSendReportPage";
 import ReportReceiptPage from "./Pages/ReportReceiptPage";
 import NotificationPage from "./Pages/NotificationPage";
+import MyReportPage from "./Pages/MyReportPage";
+import UpdateProfilePage from "./Pages/UpdateProfilePage";
+import NotificationPreferencePage from "./Pages/NotificationPreferencePage";
+import PrivacyDataPage from "./Pages/PrivacyDataPage";
+import SecurityPage from "./Pages/SecurityPage";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +49,14 @@ const router = createBrowserRouter([
     path: "/notification",
     element: <NotificationPage />,
   },
+  { path: "/profile/my-report", element: <MyReportPage /> },
+  { path: "/profile/update-profile", element: <UpdateProfilePage /> },
+  {
+    path: "/profile/notification-preference",
+    element: <NotificationPreferencePage />,
+  },
+  { path: "/profile/privacy-data", element: <PrivacyDataPage /> },
+  { path: "/profile/security", element: <SecurityPage /> },
   {
     path: "/add-report",
     element: <AddReportLayout />,
