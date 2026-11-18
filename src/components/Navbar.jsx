@@ -93,7 +93,9 @@ export default function Navbar() {
               </button>
               {openModalProfile && (
                 <div className='modal-profile-toggle flex flex-col transition-all duration-300 ease-in-out overflow-hidden'>
-                  <Link className='flex flex-col items-start px-4 py-3 hover:bg-bg-quaternary'>
+                  <Link
+                    to={"/profile/update-profile"}
+                    className='flex flex-col items-start px-4 py-3 hover:bg-bg-quaternary'>
                     <span className='font-semibold text-[13px] text-font-primary'>
                       Fahrul Septiana
                     </span>
@@ -101,7 +103,9 @@ export default function Navbar() {
                       fahrul@wargareport.id
                     </span>
                   </Link>
-                  <Link className='flex items-center gap-2 font-normal text-font-secondary px-4 py-3 hover:bg-bg-quaternary'>
+                  <Link
+                    to={"/profile/my-report"}
+                    className='flex items-center gap-2 font-normal text-font-secondary px-4 py-3 hover:bg-bg-quaternary'>
                     <span className='profile-icon w-3 h-3'></span>
                     <span className='font-publicSans text-xs text-font-secondary'>
                       My Filed Reports
