@@ -11,6 +11,9 @@ import AddReportLayout from "./layouts/AddReportLayout";
 import TopicReportPage from "./Pages/TopicReportPage";
 import LocationReportPage from "./Pages/LocationReportPage";
 import ProofReportPage from "./Pages/ProofReportPage";
+import ReviewSendReportPage from "./Pages/ReviewSendReportPage";
+import ReportReceiptPage from "./Pages/ReportReceiptPage";
+import NotificationPage from "./Pages/NotificationPage";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +37,14 @@ const router = createBrowserRouter([
     element: <DetailReportPage />,
   },
   {
+    path: "/report-receipt",
+    element: <ReportReceiptPage />,
+  },
+  {
+    path: "/notification",
+    element: <NotificationPage />,
+  },
+  {
     path: "/add-report",
     element: <AddReportLayout />,
     children: [
@@ -41,6 +52,7 @@ const router = createBrowserRouter([
       { path: "topic", element: <TopicReportPage /> },
       { path: "location", element: <LocationReportPage /> },
       { path: "proof", element: <ProofReportPage /> },
+      { path: "review-send", element: <ReviewSendReportPage /> },
     ],
   },
 ]);
