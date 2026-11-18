@@ -1,4 +1,5 @@
 import MainLayout from "../layouts/MainLayout";
+import { Link } from "react-router";
 
 export default function PrivacyDataPage() {
   return (
@@ -9,22 +10,26 @@ export default function PrivacyDataPage() {
           <h1 class='title'>Account & Case History</h1>
         </div>
       </section>
-      <section class='filter-chips'>
-        <a href='/my-reports.html' class='capsul'>
+      <section className='filter-chips'>
+        <Link to={"/profile/my-report"} className='capsul radius-20'>
           <span>My complaints</span>
-        </a>
-        <a href='/profile.html' class='capsul'>
+        </Link>
+        <Link to={"/profile/update-profile"} className='capsul radius-20'>
           <span>Profile</span>
-        </a>
-        <a href='/notification-preference.html' class='capsul'>
+        </Link>
+        <Link
+          to={"/profile/notification-preference"}
+          className='capsul radius-20'>
           <span>Notifications</span>
-        </a>
-        <a href='/privacy-data.html' class='capsul active-state'>
+        </Link>
+        <Link
+          to={"/profile/privacy-data"}
+          className='capsul radius-20 active-state'>
           <span>Privacy & data</span>
-        </a>
-        <a href='/security.html' class='capsul'>
+        </Link>
+        <Link to={"/profile/security"} className='capsul radius-20'>
           <span>Security</span>
-        </a>
+        </Link>
       </section>
       <section class='side-grow'>
         <form class='form'>
@@ -48,7 +53,7 @@ export default function PrivacyDataPage() {
               Export all submitted complaints, attached media metadata, and
               officer replies as standard JSON.
             </p>
-            <button class='button button-tertiary'>
+            <button class='button button-tertiary w-fit bg-bg-tertiary border border-border-secondary'>
               <div class='download-icon'></div>
               Download JSON archive
             </button>

@@ -1152,3 +1152,122 @@ table tbody tr:hover {
 .photo-bg ~ div > button {
   margin-top: 3px;
 }
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-label {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-label > span.eyebrow-heading,
+.report-textarea-label > span.eyebrow-heading {
+  font-size: 10px;
+  color: var(--color-font-secondary);
+}
+
+.input-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 14px 11px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border-secondary);
+  overflow: hidden;
+}
+
+.input-box div.input-with-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-box:focus-within,
+.report-textarea-input:focus-within {
+  border: 1px solid var(--color-font-secondary);
+  box-shadow: 0px 0px 0px 2px rgba(15, 107, 79, 0.13);
+}
+
+.input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-weight: 400;
+  font-size: 13px;
+  background-color: inherit;
+  color: var(--color-font-primary);
+  font-family: var(--font-publicSans);
+}
+
+.input::placeholder {
+  color: var(--color-font-tertiary);
+}
+
+.checkbox-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkbox-box label {
+  display: flex;
+  align-items: start;
+  gap: 13px;
+}
+
+.checkbox-box label input[type="checkbox"] {
+  transform: translateY(5px);
+}
+
+.checkbox-box label > span {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-publicSans);
+}
+
+.checkbox-box label > span span:nth-child(1) {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-font-primary);
+}
+
+.checkbox-box label > span span:nth-child(2) {
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--color-font-tertiary);
+}
+
+.text {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-font-secondary);
+  font-family: var(--font-publicSans);
+}
+
+.archive-download p {
+  font-family: var(--font-publicSans);
+}
+
+.archive-download p:nth-child(1) {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--color-font-primary);
+}
+
+.archive-download p:nth-child(2) {
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--color-font-tertiary);
+}
+
+.archive-download button {
+  margin-top: 4px;
+}

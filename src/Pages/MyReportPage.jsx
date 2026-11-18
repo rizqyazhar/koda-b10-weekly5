@@ -1,37 +1,46 @@
 import MainLayout from "../layouts/MainLayout";
+import { Link } from "react-router";
 
 export default function MyReportPage() {
   return (
     <MainLayout>
-      <section class='hero-section-two'>
-        <div class='hero-text-box-two'>
-          <span class='eyebrow-heading'>Citizen Management</span>
-          <h1 class='title'>Account & Case History</h1>
+      <section className='hero-section-two'>
+        <div className='hero-text-box-two'>
+          <span className='eyebrow-heading'>Citizen Management</span>
+          <h1 className='title'>Account & Case History</h1>
         </div>
       </section>
-      <section class='filter-chips'>
-        <a href='/my-reports.html' class='capsul radius-20 active-state'>
+      <section className='filter-chips'>
+        <Link
+          to={"/profile/my-report"}
+          className='capsul radius-20 active-state'>
           <span>My complaints</span>
-        </a>
-        <a href='/profile.html' class='capsul radius-20'>
+        </Link>
+        <Link to={"/profile/update-profile"} className='capsul radius-20'>
           <span>Profile</span>
-        </a>
-        <a href='/notification-preference.html' class='capsul radius-20'>
+        </Link>
+        <Link
+          to={"/profile/notification-preference"}
+          className='capsul radius-20'>
           <span>Notifications</span>
-        </a>
-        <a href='/privacy-data.html' class='capsul radius-20'>
+        </Link>
+        <Link to={"/profile/privacy-data"} className='capsul radius-20'>
           <span>Privacy & data</span>
-        </a>
-        <a href='/security.html' class='capsul radius-20'>
+        </Link>
+        <Link to={"/profile/security"} className='capsul radius-20'>
           <span>Security</span>
-        </a>
+        </Link>
       </section>
-      <section class='table-box'>
-        <div class='table-title'>
-          <span class='eyebrow-heading'>filter:</span>
-          <button class='button button-primary'>+ File new complaint</button>
+      <section className='table-box'>
+        <div className='table-title'>
+          <span className='eyebrow-heading text-[11px]'>
+            Your tracked records (2)
+          </span>
+          <button className='button button-primary'>
+            + File new complaint
+          </button>
         </div>
-        <div class='table-container'>
+        <div className='table-container'>
           <table>
             <thead>
               <tr>
@@ -54,8 +63,11 @@ export default function MyReportPage() {
                 </td>
                 <td>Dinas Pertamanan dan Hutan Kota Bandung</td>
                 <td>
-                  <span class='tag submitted-tag'>
-                    <img src='/img/icons/time-icon.svg' alt='submitted-icon' />
+                  <span className='tag submitted-tag'>
+                    <img
+                      src='/src/assets/icon/time-icon.svg'
+                      alt='submitted-icon'
+                    />
                     Submitted
                   </span>
                 </td>
@@ -79,8 +91,11 @@ export default function MyReportPage() {
                 </td>
                 <td>Perumda PAM JAYA (Clean Drinking Water)</td>
                 <td>
-                  <span class='tag inreview-tag'>
-                    <img src='/img/icons/search-icon.svg' alt='inreview-icon' />
+                  <span className='tag inreview-tag'>
+                    <img
+                      src='/src/assets/icon/search-icon.svg'
+                      alt='inreview-icon'
+                    />
                     In review
                   </span>
                 </td>
@@ -96,7 +111,7 @@ export default function MyReportPage() {
                       stroke-width='2'
                       stroke-linecap='round'
                       stroke-linejoin='round'
-                      class='lucide lucide-triangle-alert preview-icon'>
+                      className='lucide lucide-triangle-alert preview-icon'>
                       <path d='m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3' />
                       <path d='M12 9v4' />
                       <path d='M12 17h.01' />

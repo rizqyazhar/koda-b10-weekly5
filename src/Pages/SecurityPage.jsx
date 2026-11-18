@@ -1,4 +1,5 @@
 import MainLayout from "../layouts/MainLayout";
+import { Link } from "react-router";
 
 export default function SecurityPage() {
   return (
@@ -9,22 +10,26 @@ export default function SecurityPage() {
           <h1 class='title'>Account & Case History</h1>
         </div>
       </section>
-      <section class='filter-chips'>
-        <a href='/my-reports.html' class='capsul'>
+      <section className='filter-chips'>
+        <Link to={"/profile/my-report"} className='capsul radius-20'>
           <span>My complaints</span>
-        </a>
-        <a href='/profile.html' class='capsul'>
+        </Link>
+        <Link to={"/profile/update-profile"} className='capsul radius-20'>
           <span>Profile</span>
-        </a>
-        <a href='/notification-preference.html' class='capsul'>
+        </Link>
+        <Link
+          to={"/profile/notification-preference"}
+          className='capsul radius-20'>
           <span>Notifications</span>
-        </a>
-        <a href='/privacy-data.html' class='capsul'>
+        </Link>
+        <Link to={"/profile/privacy-data"} className='capsul radius-20'>
           <span>Privacy & data</span>
-        </a>
-        <a href='/security.html' class='capsul active-state'>
+        </Link>
+        <Link
+          to={"/profile/security"}
+          className='capsul radius-20 active-state'>
           <span>Security</span>
-        </a>
+        </Link>
       </section>
       <section class='side-grow'>
         <form class='form'>
@@ -94,7 +99,7 @@ export default function SecurityPage() {
               </div>
             </div>
           </div>
-          <button class='button button-primary'>Update password</button>
+          <button class='button button-primary w-fit'>Update password</button>
         </form>
       </section>
     </MainLayout>
