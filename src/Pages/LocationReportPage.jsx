@@ -33,7 +33,7 @@ export default function LocationReportPage() {
         <span className='eyebrow-heading font-normal text-[11px]'>
           Step 02 of 04
         </span>
-        <h2 className='title text-[25px]'>Where is it located??</h2>
+        <h2 className='title text-[25px]'>Where is it located?</h2>
         <p className='description text-[13px]'>
           Provide street address, RT/RW, or notable landmark for inspection
           crews.

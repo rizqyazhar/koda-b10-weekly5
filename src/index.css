@@ -376,3 +376,119 @@
   mask: url("./assets/icon/building-icon.svg") no-repeat center;
   mask-size: cover;
 }
+
+@utility upload-evidence-box {
+  padding-block: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  border-radius: 16px;
+  border: 1px dashed var(--color-border-secondary);
+}
+
+@utility upload-icon {
+  width: 28px;
+  height: 28px;
+  background-color: var(--color-bg-primary);
+  mask: url("/src/assets/icon/upload-icon.svg") no-repeat center;
+  mask-size: cover;
+}
+
+@utility upload-evidence-button-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  @media (width <= 768px) {
+    gap: 4px;
+  }
+}
+
+@utility camera-icon {
+  width: 15px;
+  height: 15px;
+  background-color: var(--color-font-secondary);
+  mask: url("/src/assets/icon/camera-icon.svg") no-repeat center;
+  mask-size: cover;
+}
+
+@utility attached-evidence-box {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-top: 10px;
+}
+
+@utility attached-evidence-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@utility video-icon {
+  width: 15px;
+  height: 15px;
+  background-color: var(--color-font-secondary);
+  mask: url("/src/assets/icon/video-icon.svg") no-repeat center;
+  mask-size: cover;
+}
+
+@utility attached-evidence-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+@utility evidence-card {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--color-border-primary);
+  overflow: hidden;
+}
+
+@utility evidence-img-box {
+  width: 100%;
+  height: 70%;
+  background-size: cover;
+  background-position: center;
+  @media (width <= 640px) {
+    width: 100%;
+    height: 60%;
+  }
+}
+
+@utility notes-evidence {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 13px;
+  @media (width <= 768px) {
+    padding: 12px 15px;
+  }
+  @media (width <= 640px) {
+    padding: 6px 10px;
+  }
+}
+
+@utility report-submit-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border-top: 1px solid var(--color-border-primary);
+  font-family: var(--font-publicSans);
+}
+
+@utility mic-icon {
+  width: 15px;
+  height: 15px;
+  background-color: var(--color-font-secondary);
+  mask: url("./assets/icon/mic-icon.svg") no-repeat center;
+  mask-size: cover;
+}
